@@ -131,6 +131,9 @@ in
         "/api/v1/ws/" = {
           proxyPass = "http://127.0.0.1:42233";
           proxyWebsockets = true;
+          extraConfig = ''
+            auth_request /auth/;
+          '';
         };
 
         "/auth/" = {
@@ -138,6 +141,9 @@ in
           extraConfig = ''
             internal;
             proxy_set_header X-Original-URI $request_uri;
+            proxy_set_header X-Original-Method $request_method;
+            proxy_pass_request_body off;
+            proxy_set_header Content-Length "";
           '';
         };
 
