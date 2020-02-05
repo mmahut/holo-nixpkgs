@@ -23,7 +23,13 @@ in
 
       serviceConfig = {
         ExecStart = "${cfg.package}/bin/hpos-admin";
+        ExecStartPost = [
+          "${pkgs.coreutils}/bin/chown root:hpos-admin-users /run/hpos-admin.sock"
+          "${pkgs.coreutils}/bin/chmod g+w /run/hpos-admin.sock"
+        ];
       };
     };
+
+    users.groups.hpos-admin-users = {};
   };
 }
