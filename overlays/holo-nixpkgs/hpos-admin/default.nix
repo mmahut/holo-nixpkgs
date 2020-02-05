@@ -10,7 +10,7 @@ stdenv.mkDerivation rec {
 
   buildCommand = ''
     makeWrapper ${python3}/bin/python3 $out/bin/${name} \
-      --add-flags ${./hpos-admin.py} 
+      --add-flags ${./hpos-admin.py}
   '';
 
   meta.platforms = platforms.linux;
