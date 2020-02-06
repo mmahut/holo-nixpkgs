@@ -17,7 +17,7 @@ def request(ctx, method, path, **kwargs):
 
 
 def get_settings_inner(ctx):
-    return request(ctx, 'GET', '/api/v1/config').json()
+    return request(ctx, 'GET', '/config').json()
 
 
 @cli.command(help='Get hpos-config.json v1.settings')
@@ -40,7 +40,7 @@ def put_settings(ctx, k, v):
     cas_hash1 = cas_hash(config)
     config[k] = v
 
-    res = request(ctx, 'PUT', '/api/v1/config',
+    res = request(ctx, 'PUT', '/config',
                   headers={'x-hpos-admin-cas': cas_hash1},
                   json=config)
     assert res.status_code == requests.codes.ok
