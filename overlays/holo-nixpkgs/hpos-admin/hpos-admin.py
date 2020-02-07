@@ -21,7 +21,7 @@ def rebuild_worker():
 
 
 def rebuild(priority, args):
-    rebuild_queue.put((priority, ['sudo', 'nixos-rebuild', 'switch'] + args))
+    rebuild_queue.put((priority, ['nixos-rebuild', 'switch'] + args))
 
 
 def get_state_path():
@@ -63,7 +63,7 @@ def put_settings():
 
 
 def zerotier_info():
-    proc = subprocess.run(['sudo', 'zerotier-cli', '-j', 'info'],
+    proc = subprocess.run(['zerotier-cli', '-j', 'info'],
                           capture_output=True, check=True)
     return json.loads(proc.stdout)
 

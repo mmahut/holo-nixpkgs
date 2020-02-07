@@ -1,4 +1,4 @@
-{ stdenv, makeWrapper, python3 }:
+{ stdenv, makeWrapper, python3, zerotierone }:
 
 with stdenv.lib;
 
@@ -10,7 +10,8 @@ stdenv.mkDerivation rec {
 
   buildCommand = ''
     makeWrapper ${python3}/bin/python3 $out/bin/${name} \
-      --add-flags ${./hpos-admin.py} 
+      --add-flags ${./hpos-admin.py} \
+      --prefix PATH : ${makeBinPath [ zerotierone ]}
   '';
 
   meta.platforms = platforms.linux;
