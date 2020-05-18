@@ -1,7 +1,7 @@
 let
   nixpkgs = fetchTarball {
-    url = "https://github.com/NixOS/nixpkgs/archive/c5d5561f772f9ed9de272e3ccb7426de6e862dd1.tar.gz";
-    sha256 = "1n41kg3xl2lbwywxpm1bdi37vbrhcww2kg6rl2lwfj9fg7w5sl76";
+    url = "https://github.com/NixOS/nixpkgs/archive/5f506b95f9f6290f4c46f523cc3f5cef581c5666.tar.gz";
+    sha256 = "14ry2fs2pny2shlg2dq8c9vns636gv0zvfh0dmyy4bnq713k377n";
   };
 
   inherit (import nixpkgs {}) stdenvNoCC fetchpatch;
